@@ -40,7 +40,7 @@ export default function App({ lang = 'pt' }) {
 
   const linhas = itens.map((p) => `• ${qtd[p.id]}x ${p[lang].nome} (${p[lang].unidade})`)
   const mensagem = [
-    ui.msgAbertura.replace('{nome}', nome || ui.msgNomePadrao),
+    ui.msgAbertura.replace('{nome}', () => nome || ui.msgNomePadrao),
     ...(linhas.length ? linhas : [ui.msgSemItens]),
     ui.msgTotal.replace('{total}', brl(total)),
     data ? ui.msgData.replace('{data}', formatarData(data)) : ui.msgDataAcombinar,
